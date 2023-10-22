@@ -1,0 +1,60 @@
+---
+title: "Blood Transfusion Analysis"
+output: html_notebook
+---
+
+```{r error=TRUE}
+load("vein_lifespans.Rda")
+load("artery_lifespans.Rda")
+```
+
+```{r error=TRUE}
+# view the lifespans of subscribers to the Vein Pack product:
+vein_lifespans
+```
+
+```{r error=TRUE}
+# calculate mean lifespan of Vein Pack users here:
+vein_lifespans_mean <- mean(vein_lifespans)
+vein_lifespans_mean
+```
+
+```{r error=TRUE}
+# calculate standard deviation fo the lifespan of Vein Pack users here:
+vein_lifespans_sd <- sd(vein_lifespans)
+vein_lifespans_sd
+```
+
+```{r error=TRUE}
+# Given that the average lifespan is 71, perform one sample t-test here to check against the null hypothesis that the Vein Pack has no effect on lifespan:
+vein_pack_test <- t.test(vein_lifespans, mu = 71)
+vein_pack_test
+
+```
+
+```{r error=TRUE}
+# view lifespans of Artery Pack users here:
+artery_lifespans
+```
+
+```{r error=TRUE}
+# calculate artery_lifespans_mean here:
+artery_lifespans_mean <- mean(artery_lifespans)
+artery_lifespans_mean
+
+```
+
+```{r error=TRUE}
+# calculate artery_lifespans_sd here:
+artery_lifespans_sd <- sd(artery_lifespans)
+artery_lifespans_sd
+
+```
+
+```{r error=TRUE}
+# perform two sample t-test here to test for distinct effects of the two products:
+package_comparison_results <- t.test(artery_lifespans, vein_lifespans)
+package_comparison_results
+
+#with a p-value of greater than 5.602%, a difference between the effects of the two products has not been demonstrated with 95% significance or greater.
+```
